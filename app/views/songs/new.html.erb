@@ -5,7 +5,20 @@
   <%= f.text_field :title %>
   <br />
 
+  <%= f.label :artist_name %>
+  <%= f.text_field :artist_name %>
+  <br />
+
+  <%= f.label :genre_id, "Genre" %>
+  <%= f.collection_select :genre_id, Genre.all,  :id, :name%>
+  <br />
+
+Notes <br />
+<%# Thanks, Shivang! %>
+  <%= f.fields_for :notes_attributes do |notes_fields| %>
+    <%= notes_fields.text_area :content, { index: 0 } %><br />
+    <%= notes_fields.text_area :content, { index: 1 } %><br>
+  <% end %>
   <%= f.submit %>
 <% end %>
-
 

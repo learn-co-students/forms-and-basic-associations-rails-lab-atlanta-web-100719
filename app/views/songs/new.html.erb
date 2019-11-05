@@ -13,13 +13,11 @@
   <%= f.collection_select :genre_id, Genre.all,  :id, :name%>
   <br />
 
-  <%= f.fields_for :notes_attributes do |note_form| %>
-    <%# See: https://api.rubyonrails.org/v5.2.3/classes/Act`ionView/Helpers/FormHelper.html#method-i-fields_for %>
-    <%= note_form.label :note %>
-    <%= note_form.text_area :note_form.index, rows: 5, cols: 50 %>
-     <%= note_form.label :note %>
-    <%= note_form.text_area :note_form.index, rows: 5, cols: 50 %>
-    <br/>
+Notes <br />
+<%# Thanks, Shivang! %>
+  <%= f.fields_for :notes_attributes do |notes_fields| %>
+    <%= notes_fields.text_area :content, { index: 0 } %><br />
+    <%= notes_fields.text_area :content, { index: 1 } %><br>
   <% end %>
   <%= f.submit %>
 <% end %>
